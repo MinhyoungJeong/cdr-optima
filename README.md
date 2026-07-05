@@ -1,8 +1,6 @@
 
-# cdr-optima
-🌍 Carbon Removal Portfolio Optimization Platform using Python, FastAPI, Next.js and Machine Learning
-
-# CDR Optima 
+# CDR Optima - 🌍 Carbon Removal Portfolio Optimization Platform 
+Built with Python, FastAPI, Next.js, PostgreSQL, Supabase, and Machine Learning.
 # 탄소 제거 프로젝트(CDR) 포트폴리오 최적화 웹 서비스
 > 기업이 Net zero 목표를 달성하기 위해 CDR 크레딧을 구매할 때,  
 > 예산·영속성·기술 다양성 제약 조건 하에서 최적의 포트폴리오를 추천하는 AI 기반 의사결정 지원 시스템입니다.
@@ -10,18 +8,54 @@
 🎥 Demo
 https://www.youtube.com/watch?v=1WY_1JM98IM
 
-🎥 ScreenShot
+✨ Velog
+https://velog.io/@happyrachel/series/Carbon-Removal-Project
+
+## 📷 Screenshots
+
+### 1. Landing Page
+
+![Main Dashboard](images/main.png)
+
+### 2. Build Portfolio
+
+![Build Portfolio](images/build-portfolio.png)
+
+### 3. Optimization Result
+
+![Optimization Result](images/optimization-result.png)
+
+### 4. Constraint Adjustment
+
+![Constraint Adjustment](images/constraint-adjustment.png)
+
+### 5. Re-optimization
+
+![Re-optimization](images/second-optimization.png)
+
+### 6. ML Analysis
+
+![ML Analysis](images/ml-analysis.png)
+
+### 7. My Page
+
+![My Page](images/my-page.png)
 
 <br>
-## 프로젝트 배경
+
+## 🎯 프로젝트 배경
+
 비자발적 탄소시장(VCM)에서 기업이 CDR 크레딧을 구매할 때 직면하는 문제:
-- 수십 개 프로젝트 중 어떤 조합이 예산 안에서 최적인가
-- 영속성·기술 다양성 등 다중 제약을 동시에 만족하는 포트폴리오를 어떻게 구성하는가
-- 수학적으로 최적인 결과가 전체 시장에서도 빠르게 소진되는 프로젝트인가
+- 수십 개 프로젝트 중 어떤 조합이 **예산 안에서 최적**인가
+- 영속성·기술 다양성 등 **다중 제약을 동시에 만족**하는 포트폴리오를 어떻게 구성하는가
+- 수학적으로 최적인 결과가 **시장에서도 검증된 프로젝트**인가
+
 이 문제를 MILP 최적화 + ML 분석 + LLM 설명의 3단 레이어로 해결합니다.
 
 <br>
-## 시스템 아키텍처
+
+## 🏗️ 시스템 아키텍처
+
 ```
 [Puro.earth Registry]
         ↓ Retirement Export
