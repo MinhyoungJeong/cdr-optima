@@ -86,8 +86,8 @@ https://velog.io/@happyrachel/series/Carbon-Removal-Project
   - 페널티 가중치: 목표 제거량(λ=999) > 예산(λ=50) > 영속성(λ=10) > 기술 다양성/프로젝트 수(λ=3)
 - GP 결과가 마음에 들지 않을 경우 조건 완화 시나리오를 사전 검증하여 실현 가능한 옵션만 제시하는 2차 최적화
 
-### 2. ML 기반 시장성 분석 (현재 Random Forest이나, 성능 평가후 XGBoost로 교체 예정) 
-- Random Forest — `days_to_retire` 예측으로 크레딧 유동성(velocity score) 산출
+### 2. ML 기반 시장성 분석 (현재 Random Forest이나,Data Leakage문제로 인해 트리모델 대신 통계분석으로 대체 예정) 
+- (변경예정) Random Forest — `days_to_retire` 예측으로 크레딧 유동성(velocity score) 산출
   - `GroupShuffleSplit(groups=projectId)`: 프로젝트 단위 train/test 분리로 data leakage 방지
 - K-means — 6개 피처(거래량·영속성·최근활동성 등)로 프로젝트를 LOW/MEDIUM/HIGH_ACTIVITY 군집화
 - SHAP(TreeExplainer) 적용 — 모델 예측 근거 정량화 및 시장 성숙도 효과 분석
@@ -148,7 +148,6 @@ Random Forest에 SHAP TreeExplainer를 적용한 결과:
 날짜 변수 3개가 전체 SHAP 기여도의 **76%** 를 차지합니다.  
 이는 단순한 data leakage가 아니라, **시장이 연도별로 성숙해지면서 거래 속도가 함께 증가하는 시장 성숙도 효과**로 해석됩니다.  
 같은 연도 내에서도 methodology별 `days_to_retire` 차이가 유의하게 존재함을 추가 검증으로 확인했습니다.
-
 <br>
 
 ## 📁 프로젝트 구조
