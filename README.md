@@ -1,4 +1,4 @@
-<img width="1138" height="921" alt="CDR Optima" src="https://github.com/user-attachments/assets/db5d31a8-309f-4ab4-955c-916304f54661" />
+
 
 # CDR Optima — 🌍 Carbon Removal Portfolio Optimization Platform
 
@@ -21,21 +21,43 @@ https://velog.io/@happyrachel/series/Carbon-Removal-Project
 ### 1. Landing Page
 <img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 09 50" src="https://github.com/user-attachments/assets/155a45e2-b14e-40df-bab1-33d0a8fb44ae" />
 
-### 2. Market Insights — 시장 온보딩
+### 2. Market Insights 
+ — 시장 온보딩
 방법론 구성 · 영속성 분포 · 공급 집중도 · 연도별 성장 추이를 카드 형식으로 안내
+
+<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 11 25" src="https://github.com/user-attachments/assets/f0444cca-5983-4a52-831d-2fd57f33c52b" />
+<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 12 07" src="https://github.com/user-attachments/assets/d074422a-7759-4039-bdcc-da7d47e10a77" />
+
 ### 3. Optimize — 포트폴리오 빌더 (4-Step Wizard)
 Company → Budget → Constraints → Review
-### 4. Results — 최적화 결과
+<img width="1138" height="921" alt="CDR Optima" src="https://github.com/user-attachments/assets/db5d31a8-309f-4ab4-955c-916304f54661" />
+
+### 4. Results — 최적화 로딩 페이지 및 결과
 KPI 요약 · 선택된 프로젝트 테이블 · AI Portfolio Analysis
-### 5. Methodology & Evidence
+
+<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 13 18" src="https://github.com/user-attachments/assets/4ed045f6-ec3b-4fa2-b862-8594b2f9e7a2" />
+
+고객의 원하는 조건에 맞는 최적해가 없을 시 -> Goal Programming으로 가장 비슷한 해를 찾음 
+(최적해가 있을 경우 -> 최적해로 출력) 
+
+<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 13 46" src="https://github.com/user-attachments/assets/57d5bc8f-ff63-4591-951a-119e05b90feb" />
+
+<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 15 26" src="https://github.com/user-attachments/assets/ca98b540-9757-4c99-9053-5a5232211d4d" />
+
+
+### 5. Methodology & Evidence &  Portfolio Ask — AI 챗봇
 RAG로 검색한 공식 방법론 문서 요약 + 출처 인용
+포트폴리오 데이터 · 방법론 문서 · 클러스터링 결과에 근거해서만 답변
+<img width="1141" height="864" alt="스크린샷 2026-09-04 오후 3 18 05" src="https://github.com/user-attachments/assets/c02e4177-ad55-455b-9bd3-4402786d1be6" />
+
 ### 6. ML Analytics
 K-means · Activity Segments (2D/3D) · PCA 해석 · Lead Time 비교
-### 7. Portfolio Ask — AI 챗봇
-포트폴리오 데이터 · 방법론 문서 · 클러스터링 결과에 근거해서만 답변
-### 8. My Page
+<img width="962" height="689" alt="스크린샷 2026-09-04 오후 3 16 56" src="https://github.com/user-attachments/assets/03a5f309-3847-4057-b0ce-b1040c0bfe5e" />
 
+### 7. My Page
 누적 포트폴리오 대시보드 · PDF 리포트 다운로드
+<img width="930" height="921" alt="스크린샷 2026-09-04 오후 3 20 00" src="https://github.com/user-attachments/assets/54ac498f-1a61-4861-8348-65552ca4210b" />
+
 
 <br>
 
@@ -242,4 +264,4 @@ cdr_optima/
 
 ---
 
-본 저장소는 포트폴리오 목적으로 공개되며, 코드 전체는 졸업 심사 후 공개 예정입니다.
+본 저장소는 포트폴리오 목적으로 공개하며, 관련 공식문서 및 csv파일은 저작권 문제로 공개하지 않습니다. 감사합니다. 
