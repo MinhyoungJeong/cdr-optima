@@ -1,56 +1,53 @@
+<img width="1138" height="921" alt="CDR Optima" src="https://github.com/user-attachments/assets/db5d31a8-309f-4ab4-955c-916304f54661" />
 
-# CDR Optima - 🌍 Carbon Removal Portfolio Optimization Platform 
-Built with Python, FastAPI, Next.js, PostgreSQL, Supabase, and Machine Learning.
-# 탄소 제거 프로젝트(CDR) 포트폴리오 최적화 웹 서비스
-> 기업이 Net zero 목표를 달성하기 위해 CDR 크레딧을 구매할 때,  
-> 예산·영속성·기술 다양성 제약 조건 하에서 최적의 포트폴리오를 추천하는 AI 기반 의사결정 지원 시스템입니다.
+# CDR Optima — 🌍 Carbon Removal Portfolio Optimization Platform
+
+Built with Python, FastAPI, Next.js, PostgreSQL, and Machine Learning.
+
+# 탄소 제거(CDR) 크레딧 포트폴리오 AI 최적화 의사결정 시스템
+
+기업이 Net-Zero 목표를 달성하기 위해 CDR 크레딧을 구매할 때, 예산·영속성·기술 다각화 제약 조건을 동시에 만족하는 최적의 포트폴리오를 자동으로 산출하고, 그 근거(시장 데이터·공식 문서·통계 분석)까지 투명하게 제시하는 AI 기반 의사결정 지원 시스템입니다.
 
 🎥 Demo
-https://www.youtube.com/watch?v=1WY_1JM98IM
+https://youtu.be/DTGAUNjjDIw
 
 ✨ Velog
 https://velog.io/@happyrachel/series/Carbon-Removal-Project
 
+<br>
+
 ## 📷 Screenshots
 
 ### 1. Landing Page
+<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 09 50" src="https://github.com/user-attachments/assets/155a45e2-b14e-40df-bab1-33d0a8fb44ae" />
 
-![Main Dashboard](images/main.png)
+### 2. Market Insights — 시장 온보딩
+방법론 구성 · 영속성 분포 · 공급 집중도 · 연도별 성장 추이를 카드 형식으로 안내
+### 3. Optimize — 포트폴리오 빌더 (4-Step Wizard)
+Company → Budget → Constraints → Review
+### 4. Results — 최적화 결과
+KPI 요약 · 선택된 프로젝트 테이블 · AI Portfolio Analysis
+### 5. Methodology & Evidence
+RAG로 검색한 공식 방법론 문서 요약 + 출처 인용
+### 6. ML Analytics
+K-means · Activity Segments (2D/3D) · PCA 해석 · Lead Time 비교
+### 7. Portfolio Ask — AI 챗봇
+포트폴리오 데이터 · 방법론 문서 · 클러스터링 결과에 근거해서만 답변
+### 8. My Page
 
-### 2. Build Portfolio
-
-![Build Portfolio](images/build-portfolio.png)
-
-### 3. Optimization Result
-
-![Optimization Result](images/optimization-result.png)
-
-### 4. Constraint Adjustment
-
-![Constraint Adjustment](images/constraint-adjustment.png)
-
-### 5. Re-optimization
-
-![Re-optimization](images/second-optimization.png)
-
-### 6. ML Analysis
-
-![ML Analysis](images/ml-analysis.png)
-
-### 7. My Page
-
-![My Page](images/my-page.png)
+누적 포트폴리오 대시보드 · PDF 리포트 다운로드
 
 <br>
 
 ## 🎯 프로젝트 배경
 
-비자발적 탄소시장(VCM)에서 기업이 CDR 크레딧을 구매할 때 직면하는 문제:
-- 수십 개 프로젝트 중 어떤 조합이 **예산 안에서 최적**인가
-- 영속성·기술 다양성 등 **다중 제약을 동시에 만족**하는 포트폴리오를 어떻게 구성하는가
-- 수학적으로 최적인 결과가 **시장에서도 검증된 프로젝트**인가
+자발적 탄소시장(VCM)에서 기업이 CDR 크레딧을 구매할 때 직면하는 문제:
 
-이 문제를 MILP 최적화 + ML 분석 + LLM 설명의 3단 레이어로 해결합니다.
+- 96개 프로젝트 중 어떤 조합이 **예산 안에서 최적**인가
+- 영속성(20~1,000년+)·기술 다양성 등 **다중 제약을 동시에 만족**하는 포트폴리오를 어떻게 구성하는가
+- 수학적으로 최적인 결과가 **시장에서도 신뢰할 수 있는 근거**를 갖는가
+
+이 문제를 **MILP 최적화 + 시장 세그먼트 분석(K-means·PCA) + RAG 기반 문서 근거 + LLM 설명·챗봇**의 다층 구조로 해결합니다.
 
 <br>
 
@@ -58,22 +55,37 @@ https://velog.io/@happyrachel/series/Carbon-Removal-Project
 
 ```
 [Puro.earth Registry]
-        ↓ Retirement Export
-[Data Pipeline]
-  transactions_raw.csv ──→ FeatureEngineer ──→ Random Forest (velocity score)
-  projects_milp.csv   ──→ K-means (activity segment)
-                      ──→ MILP Optimizer
-                              ↓
-[FastAPI Backend]
-  POST /api/v1/optimize       → MILP 최적화
-  POST /api/v1/optimize/gp    → Goal Programming (대안 탐색)
-  GET  /api/v1/ml/random-forest → velocity score 차트
-  GET  /api/v1/ml/k-means       → activity segment 시각화
-  POST /api/v1/portfolios       → 결과 저장
-  GET  /api/v1/portfolios/{id}/pdf → PDF 리포트
-        ↓
-[Next.js Frontend]
-  최적화 입력 폼 → 결과 대시보드 → ML 분석 → 마이페이지
+   ├─ Retirement Export ──────────┐
+   ├─ Issuance Export ──┐         │
+   └─ Project Export ───┤         │
+                         ▼         ▼
+              [Market Insights]  [Data Pipeline]
+              (mtime 캐시 →      transactions_raw.csv (거래 단위)
+               CSV 교체 시        + projects_milp.csv (프로젝트 파생)
+               재시작 없이 반영)      ↓
+                                DataLoader
+                            (creditType 기반 durability_score 산출)
+                                   ↓
+                    ┌──────────────┼──────────────┐
+                    ▼              ▼              ▼
+             MILP Optimizer   K-means + PCA   RAG (ChromaDB)
+             (PuLP + CBC)     (Activity        + LLM 설명
+             Goal Programming  Segment 분류)    (방법론 문서 근거)
+                    │              │              │
+                    └──────────────┼──────────────┘
+                                   ▼
+                          [FastAPI Backend]
+   POST /api/v1/optimize                → MILP 최적화
+   GET  /api/v1/market-insights         → 시장 통계 (mtime 캐시)
+   GET  /api/v1/ml/k-means              → K-means·PCA 결과 + 해석
+   POST /api/v1/portfolios              → 결과 저장 (PostgreSQL)
+   GET  /api/v1/portfolios/{id}/pdf     → PDF 리포트
+   POST /api/v1/portfolios/{id}/ask     → 저장된 포트폴리오 Q&A
+   POST /api/v1/portfolios/ask-preview  → 미저장 결과 Q&A
+                                   ↓
+                          [Next.js Frontend]
+   Landing → Market Insights → Optimize 위저드 → Results
+   (K-means/PCA 시각화 · Methodology & Evidence · Portfolio Ask 챗봇) → My Page
 ```
 
 <br>
@@ -81,22 +93,44 @@ https://velog.io/@happyrachel/series/Carbon-Removal-Project
 ## 핵심 기능
 
 ### 1. MILP 포트폴리오 최적화
-- 예산 / 목표 제거량 / 기술 집중 제한 / 영속성 / 최소 프로젝트 수 등 다중 제약 하 비용 최소화
-- 최적해 없을 경우 Goal Programming으로 제약 조건을 중요도 순으로 단계적 완화
-  - 페널티 가중치: 목표 제거량(λ=999) > 예산(λ=50) > 영속성(λ=10) > 기술 다양성/프로젝트 수(λ=3)
-- GP 결과가 마음에 들지 않을 경우 조건 완화 시나리오를 사전 검증하여 실현 가능한 옵션만 제시하는 2차 최적화
+- 예산 / 목표 제거량 / 방법론별 집중 한도 / 포트폴리오 평균 영속성 / 최소 프로젝트 수 등 다중 제약 하 총 구매 비용 최소화 (PuLP + CBC Solver)
+- 최적해가 없을 경우, **목표계획법(Goal Programming)**으로 제약별 편차 변수를 최소화하여 병목 제약을 진단하고 완화안을 제시
+- 프로젝트 영속성(`permanence_years`)은 후보 필터로 하드 컷 적용
 
-### 2. ML 기반 시장성 분석 (현재 Random Forest이나,Data Leakage문제로 인해 트리모델 대신 통계분석으로 대체 예정) 
-- (변경예정) Random Forest — `days_to_retire` 예측으로 크레딧 유동성(velocity score) 산출
-  - `GroupShuffleSplit(groups=projectId)`: 프로젝트 단위 train/test 분리로 data leakage 방지
-- K-means — 6개 피처(거래량·영속성·최근활동성 등)로 프로젝트를 LOW/MEDIUM/HIGH_ACTIVITY 군집화
-- SHAP(TreeExplainer) 적용 — 모델 예측 근거 정량화 및 시장 성숙도 효과 분석
+### 2. 시장 세그먼트 분석 (K-means · PCA)
+- 96개 프로젝트를 대상으로 K-means 군집화(LOW/MEDIUM/HIGH_ACTIVITY 3세그먼트)
+- 동일 피처 공간에서 PCA 3축으로 투영, **각 축의 로딩(loading) 기반 해석 문장을 자동 생성**
+- 선택된 포트폴리오 vs 전체 시장 비교 규칙(세그먼트 쏠림, 은퇴 소요일 편차, 단일 프로젝트 의존도)으로 인사이트 자동 서술
+- 2D/3D 시각화 토글 지원
 
-### 3. 포트폴리오 저장 · 리포트
-- 최적화 결과를 PostgreSQL(Supabase)에 저장
-- 마이페이지에서 누적 포트폴리오 대시보드 · 개별 리포트 조회
-- PDF 리포트 다운로드 (reportlab, 한글 폰트 지원)
-- LLM(Claude API) 기반 AI 분석 요약
+### 3. 영속성(Durability) 산정 — creditType 기반
+- 기존 methodology 하드코딩 매핑 방식에서, **거래 데이터의 공식 등급(creditType: CORC / CORC 20+ / CORC 100+ / CORC 1000+)** 중 프로젝트별 최신 발행분 기준으로 산정하는 방식으로 전환
+- 로그 변환 + Min-Max 정규화로 `durability_score`(0~1) 산출, K-means 피처 및 MILP 제약에 공통 사용
+
+### 4. 소진속도(Lead Time) 통계
+- 기존 Random Forest 기반 velocity score 예측은 Data Leakage 우려로 **화면에서 제거**(백엔드 로직은 보존)
+- 대신 `avg_days_to_retire = completedOn − issuanceDate`의 프로젝트별 통계를 96개 전체 가로 막대 그래프로 제공, 시장 평균 대비 상대 비교 표시
+
+### 5. 방법론 근거 제공 (RAG)
+- 방법론 공식 PDF를 400단어 단위 / 80단어 오버랩으로 청킹, `all-MiniLM-L6-v2`(Sentence-Transformers)로 임베딩하여 ChromaDB에 색인
+- Methodology & Evidence 아코디언에 기술개요·영속성 근거·인증구조·리스크 4개 섹션을 사전 정의 쿼리로 검색해 요약 제공, 방법론별 대표 이미지 병기
+
+### 6. Portfolio Ask — 근거 기반 AI 챗봇
+- 포트폴리오 결과 화면 전용 플로팅 위젯. 질문 유형에 따라 3개 도구 중 선택 호출:
+  1. `get_portfolio_context` — 저장된 MILP 결과 수치 조회 (재계산 없음)
+  2. `search_methodology_docs` — 선택된 프로젝트의 방법론 문서만 RAG 검색
+  3. `get_clustering_context` — K-means·PCA 해석/인사이트 조회
+- 근거를 찾지 못하면 지어내지 않고 정직하게 거절, 저장 전(preview) / 저장 후(saved) 포트폴리오 모두 질의 가능
+
+### 7. Market Insights — 시장 온보딩
+- Optimize 이전에 CDR 시장 규모·방법론 구성·영속성 분포·공급 집중도·연도별 성장·지역별 수요/공급을 카드 형식으로 안내
+- CSV 교체만으로 통계가 즉시 갱신되는 mtime 기반 캐시 (서버 재시작 불필요)
+
+### 8. 포트폴리오 저장 · 리포트
+- 최적화 결과를 PostgreSQL에 저장, 마이페이지에서 누적 대시보드·개별 리포트 조회
+- PDF 리포트 다운로드 (한글 폰트 지원)
+- LLM 기반 AI Portfolio Analysis 요약 자동 생성
+
 <br>
 
 ## 🛠️ 기술 스택
@@ -107,11 +141,11 @@ https://velog.io/@happyrachel/series/Carbon-Removal-Project
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat)
 
-### ML / Optimization
+### ML / Optimization / RAG
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-189AB4?style=flat)
-![SHAP](https://img.shields.io/badge/SHAP-FF6B6B?style=flat)
-![PuLP](https://img.shields.io/badge/PuLP-MILP-green?style=flat)
+![PuLP](https://img.shields.io/badge/PuLP-MILP+GoalProgramming-green?style=flat)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-vector--search-purple?style=flat)
+![Sentence-Transformers](https://img.shields.io/badge/Sentence--Transformers-all--MiniLM--L6--v2-orange?style=flat)
 
 ### Frontend
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
@@ -119,35 +153,22 @@ https://velog.io/@happyrachel/series/Carbon-Removal-Project
 ![Recharts](https://img.shields.io/badge/Recharts-22B5BF?style=flat)
 
 ### Infra / DB
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
 
 <br>
 
 ## 📊 데이터
 
-- **출처**: [Puro.earth Registry](https://registry.puro.earth/retirements) — Retirement Export
-- **규모**: 2,078건 거래 / 96개 프로젝트 / 8개 방법론
-- **선택 이유**: Issuance(발행) 데이터가 아닌 Retirement(실제 상쇄 완료) 데이터를 사용하여 실제 시장 거래 패턴 분석 가능
-- **전처리**: 23개 원본 컬럼 → 13개 분석 컬럼 필터 / `days_to_retire` 파생변수 생성 / 원-핫 인코딩
-> ⚠️ 실거래 데이터 보안상 CSV 파일은 저장소에 포함되지 않습니다.
+- **출처**: [Puro.earth Registry](https://registry.puro.earth/) — Retirement / Issuance / Project Export 3종
+- **규모**: 은퇴(Retirement) 거래 2,078건 / 96개 프로젝트 / 방법론 약 7~8종
+- **용도 구분**:
+  - Retirement Export → MILP 최적화, K-means·PCA, Lead Time 통계의 단일 소스 (`transactions_raw.csv`)
+  - Issuance + Project Export → Market Insights 전용 (`issuance_raw.csv`, `project_raw.csv`), Retirement 데이터와는 공유하되 사본을 만들지 않고 재사용
+- **집계 단위**: 거래 단위(2,078건)가 아닌 **프로젝트 단위(96개)로 집계**하여 사용 — 거래 빈도가 높은 프로젝트가 군집화에서 과대 대표되는 표본 중복(pseudo-replication) 문제 방지
+- **전처리**: `days_to_retire = completedOn − issuanceDate` 파생, creditType 기반 영속성 산정, StandardScaler 표준화
 
-<br>
+⚠️ 실거래 데이터 보안상 CSV 원본은 저장소에 포함되지 않습니다.
 
-## 🔍 SHAP 분석 주요 발견
-
-Random Forest에 SHAP TreeExplainer를 적용한 결과:
-
-| 피처 | mean \|SHAP\| | 의미 |
-|---|---|---|
-| `completed_year` | 192일 | 거래 완료 연도 (시장 성숙도 효과) |
-| `vintage` | 152일 | 크레딧 발행 연도 |
-| `issued_year` | 87일 | issuanceDate 연도 |
-| methodology / country 등 | 2일 이하 | 상대적으로 미미 |
-
-날짜 변수 3개가 전체 SHAP 기여도의 **76%** 를 차지합니다.  
-이는 단순한 data leakage가 아니라, **시장이 연도별로 성숙해지면서 거래 속도가 함께 증가하는 시장 성숙도 효과**로 해석됩니다.  
-같은 연도 내에서도 methodology별 `days_to_retire` 차이가 유의하게 존재함을 추가 검증으로 확인했습니다.
 <br>
 
 ## 📁 프로젝트 구조
@@ -155,24 +176,39 @@ Random Forest에 SHAP TreeExplainer를 적용한 결과:
 ```
 cdr_optima/
 ├── api/
-│   ├── routes_optimize.py     # MILP / GP 최적화 엔드포인트
-│   ├── routes_ml.py           # RF · K-means 결과 제공
-│   ├── routes_portfolios.py   # 포트폴리오 저장 · 조회 · PDF
-│   └── routes_auth.py         # 더미 인증
+│   ├── routes_optimize.py          # MILP / GP 최적화 엔드포인트
+│   ├── routes_ml.py                # K-means · PCA 결과 제공
+│   ├── routes_market_insights.py   # Market Insights 통계 API (mtime 캐시)
+│   ├── routes_portfolios.py        # 포트폴리오 저장·조회·PDF·Ask
+│   ├── routes_explain.py           # 선택 근거 설명(LLM)
+│   ├── routes_projects.py
+│   └── routes_auth.py
 ├── services/
-│   ├── milp_optimizer.py      # MILP + Goal Programming + 2차 최적화
-│   ├── random_forest.py       # VelocityScoreModel
-│   ├── kmeans_clustering.py   # RiskClusterer
-│   ├── feature_engineering.py # FeatureEngineer (원-핫 인코딩)
-│   ├── data_loader.py         # DataLoader (전처리 파이프라인)
-│   └── portfolio_pdf.py       # PDF 리포트 생성
+│   ├── milp_optimizer.py           # MILP + Goal Programming
+│   ├── kmeans_clustering.py        # RiskClusterer + PCA + 축 해석 생성
+│   ├── random_forest.py            # VelocityScoreModel (백엔드 보존, 화면 미노출)
+│   ├── data_loader.py              # DataLoader (creditType 기반 durability 산출 포함)
+│   ├── feature_engineering.py
+│   ├── market_insights.py          # Market Insights 통계 서비스
+│   ├── portfolio_ask.py            # 3-tool 라우팅 챗봇
+│   ├── llm_explainer.py            # AI Portfolio Analysis 생성
+│   ├── certification.py            # min_project_years → 인증 등급 서버 계산
+│   ├── portfolio_pdf.py            # PDF 리포트 생성
+│   └── methodology_rag/
+│       ├── indexer.py              # PDF 청킹(400 word/80 overlap) + 임베딩 색인
+│       ├── retriever.py            # 벡터 검색 + 인용 생성
+│       └── catalog.py
 ├── models/
-│   ├── schemas.py             # Pydantic 스키마
-│   └── (ORM 모델)             # SQLAlchemy User · Portfolio · PortfolioProject
+│   ├── schemas.py                  # Pydantic 스키마
+│   └── (ORM)                       # User · Portfolio · PortfolioProject
 ├── scripts/
-│   └── generate_projects_milp.py  # 데이터 업데이트 자동화 스크립트
+│   ├── generate_projects_milp.py   # 월간 데이터 갱신 자동화
+│   └── verify_permanence_fix.py    # durability 산정 방식 전/후 비교 검증
 └── data/
-    └── (CSV 파일 — git 제외)
+    ├── transactions_raw.csv        # Retirement (git 제외)
+    ├── projects_milp.csv           # MILP 파생 (git 제외)
+    ├── market/                     # Issuance · Project raw (git 제외)
+    └── chroma_methodology/         # RAG 벡터 인덱스
 ```
 
 <br>
@@ -181,33 +217,29 @@ cdr_optima/
 
 | 영역 | 담당 내용 |
 |---|---|
-| 데이터 파이프라인 | Puro.earth 데이터 수집·전처리, `generate_projects_milp.py` 자동화 스크립트 |
-| ML 모델링 | Random Forest(GroupShuffleSplit), K-means, SHAP 분석 |
-| 백엔드 | FastAPI 서버, MILP/GP 최적화 엔진, PDF 생성, DB 연동 |
-| 프론트엔드 | Next.js 최적화 입력 폼, 결과 대시보드, ML 시각화, 마이페이지 |
-| 데이터 분석 | EDA, 상관계수 분석, SHAP 기반 XAI 분석 (Velog 연재) |
+| 데이터 파이프라인 | Puro.earth 3종 데이터 수집·전처리, 프로젝트 단위 집계 설계 |
+| ML 모델링 | K-means·PCA 세그먼트 분석, durability 산정 방식 검증·개선 |
+| 백엔드 | FastAPI 서버, MILP/GP 최적화 엔진, RAG·챗봇 라우팅, PDF 생성 |
+| 프론트엔드 | Next.js Market Insights·Optimize 위저드·Results 대시보드·챗봇 위젯 |
+| 데이터 분석 | EDA, 상관관계 분석, 클러스터링 검증(Silhouette·Gap Statistic·VIF) (Velog 연재) |
 
 <br>
 
 ## 분석 블로그 (Velog)
 
-프로젝트의 데이터 분석 과정을 단계별로 정리하고 있습니다.
 - [1편] 프로젝트 기획 및 개요
-- [2편] EDA — 거래 단위 기초 통계 및 시각화
-- [3편] EDA — 상관관계 분석 및 모델링 연결
-- [4편] Random Forest + SHAP 분석 *(작성 중)*
-- [5편] XGBoost 비교 실험 *(예정)*
-- [6편] K-means 군집화 및 시각화 *(예정)*
+- [2편] 데이터 파이프라인 — 수치형 변수 기초 통계 및 시각화
+- [3편] CDR Projects 상관계수 분석 (Pearson · Spearman)
+- [4편] K-means 세그먼트 검증 (Silhouette · Gap Statistic · 다중공선성 분석)
 
 <br>
+
 ## 개발 기간
-
-2026.03 — 2026.08 (졸업 프로젝트, 진행 중)
-<br>
+2026.03 — 2026.09 (졸업 프로젝트)
 
 ## 팀 구성
+3인 팀 (백엔드 · 프론트엔드 · ML/데이터 분석)
 
-3인 팀 (백엔드 · 프론트엔드 · ML · LLM)
 ---
 
-> 본 저장소는 포트폴리오 목적으로 공개되며, 코드 전체는 졸업 심사 후 공개 예정입니다.
+본 저장소는 포트폴리오 목적으로 공개되며, 코드 전체는 졸업 심사 후 공개 예정입니다.
