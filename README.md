@@ -116,7 +116,7 @@ K-means · Activity Segments (2D/3D) · PCA 해석 · Lead Time 비교
 
 ### 1. MILP 포트폴리오 최적화
 - 예산 / 목표 제거량 / 방법론별 집중 한도 / 포트폴리오 평균 영속성 / 최소 프로젝트 수 등 다중 제약 하 총 구매 비용 최소화 (PuLP + CBC Solver)
-- 최적해가 없을 경우, **목표계획법(Goal Programming)**으로 제약별 편차 변수를 최소화하여 병목 제약을 진단하고 완화안을 제시
+- 최적해가 없을 경우, 목표계획법(Goal Programming)으로 제약별 편차 변수를 최소화하여 병목 제약을 진단하고 완화안을 제시
 - 프로젝트 영속성(`permanence_years`)은 후보 필터로 하드 컷 적용
 
 ### 2. 시장 세그먼트 분석 (K-means · PCA)
