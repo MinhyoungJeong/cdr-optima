@@ -11,9 +11,6 @@ Built with Python, FastAPI, Next.js, PostgreSQL, and Machine Learning.
 🎥 Demo
 https://youtu.be/DTGAUNjjDIw
 
-✨ Velog
-https://velog.io/@happyrachel/series/Carbon-Removal-Project
-
 <br>
 
 ## 📷 Screenshots
@@ -48,7 +45,6 @@ KPI 요약 · 선택된 프로젝트 테이블 · AI Portfolio Analysis
 ### 5. Methodology & Evidence &  Portfolio Ask — AI 챗봇
 RAG로 검색한 공식 방법론 문서 요약 + 출처 인용
 포트폴리오 데이터 · 방법론 문서 · 클러스터링 결과에 근거해서만 답변
-<img width="1141" height="864" alt="스크린샷 2026-09-04 오후 3 18 05" src="https://github.com/user-attachments/assets/c02e4177-ad55-455b-9bd3-4402786d1be6" />
 
 ### 6. ML Analytics
 K-means · Activity Segments (2D/3D) · PCA 해석 · Lead Time 비교
