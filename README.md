@@ -22,9 +22,6 @@ https://youtu.be/DTGAUNjjDIw
  — 시장 온보딩
 방법론 구성 · 영속성 분포 · 공급 집중도 · 연도별 성장 추이를 카드 형식으로 안내
 
-<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 11 25" src="https://github.com/user-attachments/assets/f0444cca-5983-4a52-831d-2fd57f33c52b" />
-<img width="1454" height="921" alt="스크린샷 2026-09-04 오후 3 12 07" src="https://github.com/user-attachments/assets/d074422a-7759-4039-bdcc-da7d47e10a77" />
-
 ### 3. Optimize — 포트폴리오 빌더 (4-Step Wizard)
 Company → Budget → Constraints → Review
 <img width="1138" height="921" alt="CDR Optima" src="https://github.com/user-attachments/assets/db5d31a8-309f-4ab4-955c-916304f54661" />
