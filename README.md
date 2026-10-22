@@ -7,10 +7,6 @@ Built with Python, FastAPI, Next.js, PostgreSQL, and Machine Learning.
 # 탄소 제거(CDR) 크레딧 포트폴리오 AI 최적화 의사결정 시스템
 
 기업이 Net-Zero 목표를 달성하기 위해 CDR 크레딧을 구매할 때, 예산·영속성·기술 다각화 제약 조건을 동시에 만족하는 최적의 포트폴리오를 자동으로 산출하고, 그 근거(시장 데이터·공식 문서·통계 분석)까지 투명하게 제시하는 AI 기반 의사결정 지원 시스템입니다.
-
-🎥 Demo
-https://youtu.be/DTGAUNjjDIw
-
 <br>
 
 ## 📷 Screenshots
